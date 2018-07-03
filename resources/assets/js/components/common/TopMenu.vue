@@ -1,0 +1,25 @@
+<template>
+    <div>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <router-link to="/" class="navbar-brand">Vue-SPA</router-link>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <router-link to="/about">About</router-link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</template>
+
+<script>
+    export default {
+
+    }
+</script>

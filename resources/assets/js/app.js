@@ -21,6 +21,10 @@ import VueRouter from 'vue-router';
  */
 import router from './routes';
 
+import App from './components/App';
+
+
+
 /**
  * 使用 vue 路由.
  * Vue.use 的作用是什么? 参数是什么?
@@ -28,6 +32,7 @@ import router from './routes';
  */
 Vue.use(VueRouter);
 
+Vue.component('app', App);
 
 /**
  * 实例化 Vue.
