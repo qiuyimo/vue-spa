@@ -28,6 +28,7 @@ import router from './routes';
  */
 Vue.use(VueRouter);
 
+
 /**
  * 实例化 Vue.
  */

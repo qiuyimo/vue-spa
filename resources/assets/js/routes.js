@@ -15,6 +15,12 @@ let routes = [
     {
         path: '/about',
         'component': require('./components/About.vue')
+    },
+
+    {
+        path: '/posts/:id',
+        name: 'posts',
+        'component': require('./components/Post')
     }
 ];
 
