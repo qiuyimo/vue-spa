@@ -1,13 +1,5 @@
 <template>
-    <form class="form-horizontal" @submit.prevent="register">
-        <div class="form-group">
-            <label for="name" class="col-md-4 control-label">用户名</label>
-
-            <div class="col-md-6">
-                <input v-model="name" id="name" type="text" class="form-control" name="name" required>
-            </div>
-        </div>
-
+    <form class="form-horizontal" @submit.prevent="login">
         <div class="form-group">
             <label for="email" class="col-md-4 control-label">邮箱</label>
 
@@ -25,17 +17,9 @@
         </div>
 
         <div class="form-group">
-            <label for="password-confirm" class="col-md-4 control-label">确认密码</label>
-
-            <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
-                    Register
+                    登录
                 </button>
             </div>
         </div>
@@ -43,23 +27,28 @@
 </template>
 
 <script>
+    import JWTToken from './../../helpers/jwt';
+
     export default {
         data() {
             return {
-                name: '',
                 email: '',
                 password: ''
             }
         },
         methods: {
-            register() {
+            login() {
                 let formData = {
-                    name: this.name,
-                    email: this.email,
+                    client_id: 2,
+                    client_secret: 'VP3RWM7R6ogfDEBannIO9M2O1mdsqHpMZxhIwFyH',
+                    grant_type: 'password',
+                    scope: '',
+                    username: this.email,
                     password: this.password
                 };
-                axios.post('/api/register', formData).then(response => {
-                    console.log(response);
+                axios.post('/oauth/token', formData).then(response => {
+                    JWTToken.setToken(response.data.access_token);
+                    console.log(response.data);
                 });
             }
         }
